@@ -12,3 +12,8 @@
 /captures
 .externalNativeBuild
 .cxx
+
+**/google-services.json
+app/debug
+app/release
+**.jks
