@@ -81,6 +81,7 @@ dependencies {
     implementation 'com.google.android.gms:play-services-measurement-base:17.4.4'
 
     implementation 'com.scottyab:rootbeer-lib:0.0.8'
+    implementation 'com.github.thealeksandr:PFLockScreen-Android:1.0.0-beta7'
 
     testImplementation 'junit:junit:4.12'
     testImplementation 'androidx.room:room-testing:2.2.5'

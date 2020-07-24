@@ -20,6 +20,17 @@ object sessionManager {
     const val SEMITRUSTED_CLIENT = "semitrusted_client"
     const val TRUSTED_CLIENT = "trusted_client"
 
+    var pinCode: String? = null
+        set(value) {
+            field = value
+            PreferenceManager.getDefaultSharedPreferences(application.applicationContext).edit()
+                .putString("pinCode", value).apply()
+        }
+        get() {
+            return PreferenceManager.getDefaultSharedPreferences(application.applicationContext)
+                .getString("pinCode", null)
+        }
+
     var jwtToken: String? = null
         set(value) {
             field = value
@@ -53,6 +64,8 @@ object sessionManager {
     }
 
     fun isLoggedIn() = jwtToken != null
+
+    fun hasPinCode() = pinCode != null
 
     fun getPayload(): JwtPayload? =
         if (!isLoggedIn()) null
