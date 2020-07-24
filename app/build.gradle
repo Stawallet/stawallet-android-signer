@@ -2,6 +2,8 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.google.firebase.crashlytics'
 
 android {
     compileSdkVersion 29
@@ -72,6 +74,10 @@ dependencies {
     implementation 'com.google.firebase:firebase-iid:20.2.3'
     implementation 'com.google.firebase:firebase-crashlytics:17.1.1'
 
+    // Captcha
+    implementation 'com.google.android.gms:play-services-safetynet:17.0.0'
+    implementation 'com.google.android.gms:play-services-measurement-api:17.4.4'
+    implementation 'com.google.android.gms:play-services-measurement-base:17.4.4'
 
     testImplementation 'junit:junit:4.12'
     testImplementation 'androidx.room:room-testing:2.2.5'
