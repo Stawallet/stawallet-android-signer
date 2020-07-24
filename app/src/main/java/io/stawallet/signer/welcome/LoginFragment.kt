@@ -22,7 +22,7 @@ import io.stawallet.signer.data.sessionManager
 
 class LoginFragment : Fragment() {
     companion object {
-        fun newInstance() = SplashFragment()
+        fun newInstance() = LoginFragment()
     }
 
     private lateinit var welcomeViewModel: WelcomeViewModel
@@ -79,7 +79,12 @@ class LoginFragment : Fragment() {
                     when (loginResult) {
                         is TokenResponse -> {
                             sessionManager.login(loginResult.token)
-                            // TODO: Show success
+                            Toast.makeText(
+                                context,
+                                R.string.logged_in_successfully,
+                                Toast.LENGTH_LONG
+                            ).show()
+                            welcomeViewModel.currentPage.postValue("setup")
                         }
                         "bad-otp" -> showLoginFailed(R.string.otp_requires)
                         "invalid-otp" -> showLoginFailed(R.string.wrong_code)

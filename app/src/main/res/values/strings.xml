@@ -21,5 +21,6 @@
     <string name="too_many_requests">Too many requests. Please try again in a few seconds.</string>
     <string name="unkknown_error">Error occurred!</string>
     <string name="otp_requires">Otp needed!</string>
+    <string name="logged_in_successfully">Logged in successfully!</string>
 
 </resources>

@@ -48,6 +48,7 @@ dependencies {
     implementation 'androidx.navigation:navigation-ui-ktx:2.3.0'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
     implementation 'androidx.annotation:annotation:1.1.0'
+    implementation "androidx.security:security-crypto:1.1.0-alpha01"
     implementation 'androidx.room:room-runtime:2.2.5'
     implementation 'androidx.room:room-coroutines:2.1.0-alpha04'
     kapt 'androidx.room:room-compiler:2.2.5'
@@ -78,6 +79,8 @@ dependencies {
     implementation 'com.google.android.gms:play-services-safetynet:17.0.0'
     implementation 'com.google.android.gms:play-services-measurement-api:17.4.4'
     implementation 'com.google.android.gms:play-services-measurement-base:17.4.4'
+
+    implementation 'com.scottyab:rootbeer-lib:0.0.8'
 
     testImplementation 'junit:junit:4.12'
     testImplementation 'androidx.room:room-testing:2.2.5'

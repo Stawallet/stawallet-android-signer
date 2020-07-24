@@ -6,12 +6,10 @@ import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
 import android.os.Build
+import android.util.Log
 import androidx.room.Room
-import io.stawallet.signer.data.StawalletDatabase
-import io.stawallet.signer.data.sessionManager
 import com.google.firebase.crashlytics.FirebaseCrashlytics
-import io.stawallet.signer.data.okHttpClient
-import io.stawallet.signer.data.stawalletDatabase
+import io.stawallet.signer.data.*
 
 lateinit var application: Application
 
@@ -38,6 +36,8 @@ class Application : android.app.Application() {
         // val lockManager = LockManager.getInstance()
         // lockManager.appLock.logoId = R.drawable.ic_launcher_foreground
         // lockManager.enableAppLock(this, CustomPinActivity::class.java)
+
+        Log.e("salam", DeviceSecurityHelper.iid)
 
         initializeFirebaseCrashlytics()
 
