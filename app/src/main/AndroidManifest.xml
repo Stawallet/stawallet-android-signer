@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".Application"
         android:allowBackup="false"
         android:fullBackupContent="false"
         android:icon="@mipmap/ic_launcher"
@@ -29,6 +30,20 @@
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
+
+        <receiver
+            android:name=".background.SignerRestarter"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="restart-stawallet-signer" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name=".background.SignerService"
+            android:enabled="true" />
+
     </application>
 
 </manifest>
