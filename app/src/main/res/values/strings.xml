@@ -17,5 +17,9 @@
     <string name="status_code_colon">Status Code:</string>
     <string name="error_message_colon">Error Message:</string>
     <string name="unknown">Unknown</string>
+    <string name="wrong_code">Wrong code!</string>
+    <string name="too_many_requests">Too many requests. Please try again in a few seconds.</string>
+    <string name="unkknown_error">Error occurred!</string>
+    <string name="otp_requires">Otp needed!</string>
 
 </resources>
