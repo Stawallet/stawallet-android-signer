@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_seeds">
+
+    <fragment
+        android:id="@+id/navigation_seeds"
+        android:name="io.stawallet.signer.seed.SeedListFragment"
+        android:label="@string/title_seeds"
+        tools:layout="@layout/fragment_seeds" />
+
+    <fragment
+        android:id="@+id/navigation_activity"
+        android:name="io.stawallet.signer.ui.dashboard.DashboardFragment"
+        android:label="@string/title_dashboard"
+        tools:layout="@layout/fragment_dashboard" />
+
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="io.stawallet.signer.ui.notifications.NotificationsFragment"
+        android:label="@string/title_notifications"
+        tools:layout="@layout/fragment_notifications" />
+</navigation>

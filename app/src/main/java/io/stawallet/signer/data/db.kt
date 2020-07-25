@@ -15,7 +15,7 @@ import java.math.BigDecimal
         User::class,
         Seed::class
     ],
-    version = 1
+    version = 2
 )
 @TypeConverters(Converters::class)
 abstract class StawalletDatabase : RoomDatabase() {
