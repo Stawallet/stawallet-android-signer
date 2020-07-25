@@ -37,7 +37,7 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        welcomeViewModel = ViewModelProviders.of(this).get(WelcomeViewModel::class.java)
+        welcomeViewModel = ViewModelProviders.of(requireActivity()).get(WelcomeViewModel::class.java)
 
         val usernameEditText = view.findViewById<EditText>(R.id.username)
         val passwordEditText = view.findViewById<EditText>(R.id.password)
@@ -84,7 +84,7 @@ class LoginFragment : Fragment() {
                                 R.string.logged_in_successfully,
                                 Toast.LENGTH_LONG
                             ).show()
-                            welcomeViewModel.currentPage.postValue("setup")
+                            welcomeViewModel.currentPage.postValue("pin")
                         }
                         "bad-otp" -> showLoginFailed(R.string.otp_requires)
                         "invalid-otp" -> showLoginFailed(R.string.wrong_code)

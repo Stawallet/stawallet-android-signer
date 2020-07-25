@@ -5,9 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import io.stawallet.signer.R
-import io.stawallet.signer.data.reason
-import io.stawallet.signer.data.sessionManager
-import io.stawallet.signer.data.stawalletApiClient
+import io.stawallet.signer.data.*
 import io.stawallet.signer.helper.Event
 import io.stawallet.signer.helper.coRunMain
 import io.stawallet.signer.helper.unjustifiedSilence
@@ -20,7 +18,7 @@ class WelcomeViewModel : ViewModel() {
 
     fun dismissSplash() {
         if (sessionManager.isLoggedIn()) {
-            currentPage.postValue("pin")
+            currentPage.postValue("unlock")
         } else {
             currentPage.postValue("login")
         }
@@ -71,6 +69,13 @@ class WelcomeViewModel : ViewModel() {
     // A placeholder password validation check
     private fun isPasswordValid(password: String): Boolean {
         return password.length > 5
+    }
+
+    fun hardLogout() {
+        // TODO: Implement
+        unjustifiedSilence { sessionManager.whipSession() }
+        unjustifiedSilence { AppProtection.whip() }
+        unjustifiedSilence { stawalletDatabase.wipeDb() }
     }
 
 }

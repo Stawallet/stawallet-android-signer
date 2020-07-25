@@ -6,6 +6,7 @@ import android.util.Base64
 import com.google.gson.Gson
 import com.google.gson.annotations.SerializedName
 import io.stawallet.signer.application
+import java.lang.Exception
 
 /**
  * Should get manually updated while login/logout
@@ -19,17 +20,6 @@ object sessionManager {
     const val CLIENT = "client"
     const val SEMITRUSTED_CLIENT = "semitrusted_client"
     const val TRUSTED_CLIENT = "trusted_client"
-
-    var pinCode: String? = null
-        set(value) {
-            field = value
-            PreferenceManager.getDefaultSharedPreferences(application.applicationContext).edit()
-                .putString("pinCode", value).apply()
-        }
-        get() {
-            return PreferenceManager.getDefaultSharedPreferences(application.applicationContext)
-                .getString("pinCode", null)
-        }
 
     var jwtToken: String? = null
         set(value) {
@@ -55,6 +45,13 @@ object sessionManager {
 
     fun login(t: String) {
         jwtToken = t
+        try {
+            getPayload()
+        } catch (e: Exception) {
+            // Token can not be parsed
+            // TODO: Raise a exception
+            jwtToken = null
+        }
     }
 
     fun whipSession() {
@@ -64,8 +61,6 @@ object sessionManager {
     }
 
     fun isLoggedIn() = jwtToken != null
-
-    fun hasPinCode() = pinCode != null
 
     fun getPayload(): JwtPayload? =
         if (!isLoggedIn()) null
