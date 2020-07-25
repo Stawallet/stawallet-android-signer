@@ -12,13 +12,15 @@ import java.math.BigDecimal
 
 @Database(
     entities = [
-        User::class
+        User::class,
+        Seed::class
     ],
     version = 1
 )
 @TypeConverters(Converters::class)
 abstract class StawalletDatabase : RoomDatabase() {
     abstract val userDao: UserDao
+    abstract val seedDao: SeedDao
 
 }
 
@@ -45,5 +47,6 @@ class Converters {
 fun StawalletDatabase.wipeDb() {
     GlobalScope.launch(Dispatchers.IO) {
         userDao.deleteAll()
+        seedDao.deleteAll()
     }
 }

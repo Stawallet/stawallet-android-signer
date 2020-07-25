@@ -29,3 +29,8 @@ data class TokenResponse(
     val token: String
 )
 
+
+@Entity
+data class Seed(
+    @PrimaryKey val fingerprint: String
+)

@@ -23,3 +23,23 @@ interface UserDao {
     @Query("SELECT * FROM User LIMIT 1")
     fun loadTheOnlyOne(): LiveData<User>
 }
+
+@Dao
+interface SeedDao {
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun save(seed: Seed)
+
+    @Query("DELETE FROM Seed WHERE fingerprint NOT IN (:whitelist)")
+    fun deleteAllBut(whitelist: List<String>)
+
+    @Query("DELETE FROM Seed")
+    fun deleteAll()
+
+    @Query("SELECT * FROM Seed WHERE fingerprint = :fingerprint")
+    fun loadByFingerprint(fingerprint: String): LiveData<Seed>
+
+    @Query("SELECT * FROM Seed")
+    fun loadAll(): LiveData<List<Seed>>
+
+
+}
