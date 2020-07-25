@@ -41,7 +41,7 @@ object SeedsRepository {
     private var job: Job? = null
     private val scope = CoroutineScope(Dispatchers.Default)
 
-    fun getMe(): LiveData<List<Seed>> {
+    fun getAllSeeds(): LiveData<List<Seed>> {
         return seedDao.loadAll()
     }
 
