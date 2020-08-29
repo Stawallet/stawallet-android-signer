@@ -54,24 +54,30 @@ class WelcomeActivity : AppCompatActivity() {
                             Uri.parse(FORGET_PASSWORD_WEB_APP_URL)
                         )
                     )
+                    finish()
+                }
+                "forgetpin" -> {
+                    viewModel.hardLogout()
+                    viewModel.currentPage.postValue("login")
                 }
                 "pin" -> {
+                    val fragment = PFLockScreenFragment()
                     val builder =
                         PFFLockScreenConfiguration.Builder(this)
-                            .setTitle("Create Code")
+                            .setTitle("Please define a PIN code to secure your wallet")
                             .setCodeLength(6)
                             .setNewCodeValidation(true)
-                            .setNewCodeValidationTitle("Please input code again")
+                            .setNewCodeValidationTitle("Please enter the code again")
+                            .setLeftButton("Logout")
+                            .setNextButton("Continue...")
                             .setUseFingerprint(AppProtection.isFingerprintEnable)
-                    val fragment = PFLockScreenFragment()
-
+                    builder.setMode(PFFLockScreenConfiguration.MODE_CREATE)
+                    fragment.setConfiguration(builder.build())
                     fragment.setOnLeftButtonClickListener {
                         viewModel.hardLogout()
                         viewModel.currentPage.postValue("forget")
                     }
 
-                    builder.setMode(PFFLockScreenConfiguration.MODE_CREATE)
-                    fragment.setConfiguration(builder.build())
                     fragment.setCodeCreateListener(object : OnPFLockScreenCodeCreateListener {
                         override fun onNewCodeValidationFailed() {
                             Toast.makeText(
@@ -85,6 +91,7 @@ class WelcomeActivity : AppCompatActivity() {
 
                         override fun onCodeCreated(encodedCode: String) {
                             AppProtection.setPinCode(encodedCode)
+                            viewModel.currentPage.postValue("main")
                         }
                     })
                     fragment.setLoginListener(object :
@@ -136,21 +143,19 @@ class WelcomeActivity : AppCompatActivity() {
                         viewModel.currentPage.postValue("login")
                         return@Observer
                     }
+                    val fragment = PFLockScreenFragment()
                     val builder =
                         PFFLockScreenConfiguration.Builder(this)
                             .setTitle("Unlock with your pin code or fingerprint")
                             .setCodeLength(6)
                             .setLeftButton("Can't remember")
                             .setUseFingerprint(AppProtection.isFingerprintEnable)
-                    val fragment = PFLockScreenFragment()
-
+                    builder.setMode(PFFLockScreenConfiguration.MODE_AUTH)
+                    fragment.setConfiguration(builder.build())
                     fragment.setOnLeftButtonClickListener {
-                        viewModel.hardLogout()
-                        viewModel.currentPage.postValue("forget")
+                        viewModel.currentPage.postValue("forgetpin")
                     }
 
-                    fragment.setConfiguration(builder.build())
-                    builder.setMode(PFFLockScreenConfiguration.MODE_AUTH)
                     fragment.setLoginListener(object :
                         PFLockScreenFragment.OnPFLockScreenLoginListener {
                         override fun onPinLoginFailed() {
