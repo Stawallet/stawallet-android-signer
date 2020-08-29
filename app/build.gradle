@@ -84,11 +84,15 @@ dependencies {
     // Crypto
     implementation 'com.github.komputing.kethereum:bip39:0.83.0'
     implementation 'com.github.komputing.kethereum:bip39_wordlist_en:0.83.0'
+    implementation 'com.auth0.android:jwtdecode:2.0.0'
 
     // UI
     implementation 'com.github.badoualy:stepper-indicator:1.0.7'
     implementation 'com.scottyab:rootbeer-lib:0.0.8'
     implementation 'com.github.thealeksandr:PFLockScreen-Android:1.0.0-beta7'
+    implementation 'com.karumi:dexter:6.2.1'
+    implementation 'com.google.zxing:core:3.3.0'
+    implementation('com.journeyapps:zxing-android-embedded:4.1.0') { transitive = false }
 
     implementation "com.airbnb.android:lottie:3.4.1"
 

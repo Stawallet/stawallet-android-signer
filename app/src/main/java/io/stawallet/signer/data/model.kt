@@ -32,5 +32,11 @@ data class TokenResponse(
 
 @Entity
 data class Seed(
-    @PrimaryKey val fingerprint: String
+    @PrimaryKey val fingerprint: String,
+    val projectName: String,
+    val title: String?,
+    val serverPublicKey: String,
+    val token: String,
+    val phrase: String?
+
 )

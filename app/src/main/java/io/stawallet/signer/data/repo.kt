@@ -45,6 +45,10 @@ object SeedsRepository {
         return seedDao.loadAll()
     }
 
+    fun addNewSeed(seed: Seed) {
+        return seedDao.save(seed)
+    }
+
 }
 
 object UserRepository {
