@@ -81,6 +81,12 @@ dependencies {
     implementation 'com.google.android.gms:play-services-measurement-api:17.4.4'
     implementation 'com.google.android.gms:play-services-measurement-base:17.4.4'
 
+    // Crypto
+    implementation 'com.github.komputing.kethereum:bip39:0.83.0'
+    implementation 'com.github.komputing.kethereum:bip39_wordlist_en:0.83.0'
+
+    // UI
+    implementation 'com.github.badoualy:stepper-indicator:1.0.7'
     implementation 'com.scottyab:rootbeer-lib:0.0.8'
     implementation 'com.github.thealeksandr:PFLockScreen-Android:1.0.0-beta7'
 
