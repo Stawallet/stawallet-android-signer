@@ -31,6 +31,28 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".NewSeedActivity"
+            android:label="Add New Seed">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="@string/webapp_host_name"
+                    android:path="/android_new_seed"
+                    android:scheme="https" />
+            </intent-filter>
+
+        </activity>
+
         <receiver
             android:name=".background.SignerRestarter"
             android:enabled="true"
