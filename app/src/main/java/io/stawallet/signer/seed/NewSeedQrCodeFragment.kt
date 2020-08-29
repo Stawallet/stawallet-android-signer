@@ -23,14 +23,14 @@ import java.lang.Exception
 
 class NewSeedQrCodeFragment : Fragment() {
 
-    private lateinit var viewModel: NewSeedsViewModel
+    private lateinit var viewModel: NewSeedViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        viewModel = ViewModelProviders.of(requireActivity()).get(NewSeedsViewModel::class.java)
+        viewModel = ViewModelProviders.of(requireActivity()).get(NewSeedViewModel::class.java)
 
         val rootView = inflater.inflate(R.layout.fragment_new_seed_qrcode, container, false)
 
@@ -81,6 +81,8 @@ class NewSeedQrCodeFragment : Fragment() {
             val title: String = claims["title"]?.asString()!!
             val serverPublicKey: String = claims["publicKey"]?.asString()!!
 
+
+            viewModel.changePage("review")
         } catch (e: Exception) {
             return Toast.makeText(
                 requireContext(),

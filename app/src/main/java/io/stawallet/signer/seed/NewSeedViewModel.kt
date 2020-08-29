@@ -6,7 +6,7 @@ import org.kethereum.bip39.entropyToMnemonic
 import org.kethereum.bip39.generateMnemonic
 import org.kethereum.bip39.wordlists.WORDLIST_ENGLISH
 
-class NewSeedsViewModel : ViewModel() {
+class NewSeedViewModel : ViewModel() {
 
 
     val MNEMONIC_PHRASE_ENTROPY_SIZE = 2048
